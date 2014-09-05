@@ -1,0 +1,44 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppBaseTheme" parent="android:Theme.Light"></style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme"></style>
+
+    <style name="EditText_Style">
+        <item name="android:textColor">@color/text_color_account_info</item>
+        <item name="android:background">@drawable/bg_edittext</item>
+        <item name="android:textColorHint">@color/edittext_hint_color</item>
+        <item name="android:textSize">@dimen/text_size_account_info</item>
+    </style>
+
+    <style name="Button_Style">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:textColorHint">@color/edittext_hint_color</item>
+        <item name="android:textSize">@dimen/text_size_button</item>
+    </style>
+    
+    <style name="dragscrollview">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:fillViewport">true</item>
+        <item name="android:overScrollMode">never</item>
+    </style>
+    
+    <style name="setkey_textview">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">#ff5e5546</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ControlAndroid</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="str_main_setip">请设置电脑IP地址</string>
+    <string name="str_main_connection">连接电脑</string>
+    
+    <!-- 代码中的常量 -->
+    <string name="connection_error">连接电脑失败，请重试</string>
+    <string name="net_error">手机无网络</string>
+
+</resources>

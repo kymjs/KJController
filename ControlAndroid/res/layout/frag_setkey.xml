@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.kymjs.aframe.ui.widget.KJScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/dragscrollview"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical|left"
+            android:padding="@dimen/dimen_10dp"
+            android:text="触摸板模式"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:id="@+id/setting_volume_up"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_top"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="音量＋" />
+
+            <TextView
+                android:id="@+id/setkey_tv_volume_up"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true"
+                android:text="设置" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_volume_down"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_mid"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="音量－" />
+
+            <TextView
+                android:id="@+id/setkey_tv_volume_down"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true"
+                android:text="设置" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_menu_key"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_mid"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="菜单键" />
+
+            <TextView
+                android:id="@+id/setkey_tv_menu"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true"
+                android:text="设置" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_back_key"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_bottom"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="返回键" />
+
+            <TextView
+                android:id="@+id/setkey_tv_back"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true"
+                android:text="设置" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</org.kymjs.aframe.ui.widget.KJScrollView>

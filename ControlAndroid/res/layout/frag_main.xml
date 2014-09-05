@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/main_et_pcip"
+        style="@style/EditText_Style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:hint="@string/str_main_setip" />
+
+    <Button
+        android:id="@+id/main_btn_submit"
+        style="@style/Button_Style"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/selector_btn_blue"
+        android:text="@string/str_main_connection" />
+
+</RelativeLayout>
