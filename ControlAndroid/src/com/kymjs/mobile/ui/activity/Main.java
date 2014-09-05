@@ -4,6 +4,7 @@ import org.kymjs.aframe.ui.KJActivityManager;
 import org.kymjs.aframe.ui.fragment.BaseFragment;
 import org.kymjs.aframe.ui.widget.ResideMenuItem;
 
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.kymjs.mobile.R;
@@ -50,6 +51,14 @@ public class Main extends SlidTemplet {
             KJActivityManager.create().AppExit(aty);
         }
         resideMenu.closeMenu();
+    }
+    
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
     
     /**
