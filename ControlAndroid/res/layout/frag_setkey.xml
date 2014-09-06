@@ -20,7 +20,7 @@
             android:textSize="14sp" />
 
         <RelativeLayout
-            android:id="@+id/setting_volume_up"
+            android:id="@+id/setting_touch_volume_up"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_settings_top"
@@ -40,7 +40,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/setting_volume_down"
+            android:id="@+id/setting_touch_volume_down"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_settings_mid"
@@ -60,7 +60,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/setting_menu_key"
+            android:id="@+id/setting_touch_menu_key"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_settings_mid"
@@ -80,7 +80,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/setting_back_key"
+            android:id="@+id/setting_touch_back_key"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_settings_bottom"

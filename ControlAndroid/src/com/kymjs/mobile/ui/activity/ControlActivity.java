@@ -12,6 +12,7 @@ import org.kymjs.aframe.ui.ViewInject;
 import org.kymjs.aframe.ui.activity.BaseActivity;
 import org.kymjs.aframe.utils.DensityUtils;
 
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnLongClickListener;
@@ -26,21 +27,21 @@ import com.kymjs.mobile.R;
 public class ControlActivity extends BaseActivity implements
         OnLongClickListener {
     public static int PORT = 8899;
-    
+
     private static float sMoveX = 0; // 发送的鼠标移动的差值
     private static float sMoveY = 0;
     private static float sPrevX; // 记录上次鼠标的位置
     private static float sPrevY;
     private static float sFirstX; // 手指第一次接触屏幕时的坐标
     private static float sFirstY;
-    
+
     private static final String LeftKeyDown = "leftButton:down";
     private static final String LeftKeyUp = "leftButton:release";
     private static final String RightKeyDown = "rightButton:down";
     private static final String RightKeyUp = "rightButton:release";
     private static final String MouseMove = "mouse:";
     private static final String MouseWheel = "mousewheel:";
-    
+
     @BindView(id = R.id.control_btn_mouse_leftkey, click = true)
     private Button mMouseLeftKey;
     @BindView(id = R.id.control_btn_mouse_rightkey, click = true)
@@ -49,18 +50,18 @@ public class ControlActivity extends BaseActivity implements
     private View mMouseWheel;
     @BindView(id = R.id.control_mouse)
     private View mMouseTouch;
-    
+
     private AppContext application;
     private DatagramSocket socket;
     private ThreadPoolExecutor threadPool;
-    
+
     private boolean flag_press = false;
-    
+
     @Override
     public void setRootView() {
         setContentView(R.layout.aty_control);
     }
-    
+
     @Override
     protected void initData() {
         super.initData();
@@ -74,19 +75,21 @@ public class ControlActivity extends BaseActivity implements
             skipActivity(aty, Main.class);
         }
     }
-    
+
     @Override
     protected void initWidget() {
         super.initWidget();
         screenAdapter();
         mMouseLeftKey.setOnLongClickListener(this);
         mMouseRightKey.setOnLongClickListener(this);
-        mMouseLeftKey.setBackgroundResource(R.drawable.selector_mouse_left);
-        mMouseRightKey.setBackgroundResource(R.drawable.selector_mouse_right);
+        mMouseLeftKey
+                .setBackgroundResource(R.drawable.selector_mouse_left);
+        mMouseRightKey
+                .setBackgroundResource(R.drawable.selector_mouse_right);
         mMouseWheel.setBackgroundResource(R.drawable.ic_mouse_wheel);
         initTouchEvent();
     }
-    
+
     /**
      * 屏幕适配器
      */
@@ -106,7 +109,7 @@ public class ControlActivity extends BaseActivity implements
         paramsR.width = w * 2;
         mMouseRightKey.setLayoutParams(paramsR);
     }
-    
+
     @Override
     public void widgetClick(View v) {
         super.widgetClick(v);
@@ -121,7 +124,7 @@ public class ControlActivity extends BaseActivity implements
             break;
         }
     }
-    
+
     @Override
     public boolean onLongClick(View v) {
         switch (v.getId()) {
@@ -144,7 +147,13 @@ public class ControlActivity extends BaseActivity implements
         }
         return true;
     }
-    
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        handleKeyBoardEvent(keyCode, event);
+        return true;
+    }
+
     /**
      * 初始化鼠标移动事件
      */
@@ -165,7 +174,8 @@ public class ControlActivity extends BaseActivity implements
                     handleMoveEvent(event);
                 }
                 if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (sFirstX == event.getX() && sFirstY == event.getY()) {
+                    if (sFirstX == event.getX()
+                            && sFirstY == event.getY()) {
                         mMouseLeftKey.performClick();
                     } else {
                         v.performClick();
@@ -174,7 +184,7 @@ public class ControlActivity extends BaseActivity implements
                 return true;
             }
         });
-        
+
         /**
          * 滚轮事件
          */
@@ -197,7 +207,7 @@ public class ControlActivity extends BaseActivity implements
             }
         });
     }
-    
+
     /**
      * 处理鼠标移动事件
      */
@@ -214,7 +224,7 @@ public class ControlActivity extends BaseActivity implements
             sendMessage(str.toString());
         }
     }
-    
+
     /**
      * 处理滚轮事件
      */
@@ -223,42 +233,60 @@ public class ControlActivity extends BaseActivity implements
             sendMessage(MouseWheel + sMoveY);
         }
     }
-    
+
+    /**
+     * 处理按键事件
+     */
+    private void handleKeyBoardEvent(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            sendMessage("keyboard:" + application.keyBack);
+        } else if (keyCode == KeyEvent.KEYCODE_MENU) {
+            sendMessage("keyboard:" + application.keyMenu);
+        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+            sendMessage("keyboard:" + application.keyVolumeUp);
+        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+            sendMessage("keyboard:" + application.keyVolumeDown);
+        }
+    }
+
     /**
      * net request
      */
     private void sendMessage(String datas) {
         if (LeftKeyUp.equals(datas) && flag_press) {
             flag_press = false;
-            mMouseLeftKey.setBackgroundResource(R.drawable.selector_mouse_left);
+            mMouseLeftKey
+                    .setBackgroundResource(R.drawable.selector_mouse_left);
             mMouseRightKey
                     .setBackgroundResource(R.drawable.selector_mouse_right);
         }
         if (RightKeyUp.equals(datas) && flag_press) {
             flag_press = false;
-            mMouseLeftKey.setBackgroundResource(R.drawable.selector_mouse_left);
+            mMouseLeftKey
+                    .setBackgroundResource(R.drawable.selector_mouse_left);
             mMouseRightKey
                     .setBackgroundResource(R.drawable.selector_mouse_right);
         }
         threadPool.submit(new SendCommandThread(datas.getBytes()));
     }
-    
+
     /**
      * 向电脑发送命令的线程
      */
     private class SendCommandThread implements Runnable {
         private byte[] datas;
-        
+
         public SendCommandThread(byte[] datas) {
             this.datas = datas;
         }
-        
+
         @Override
         public void run() {
             try {
-                InetAddress pcAddress = InetAddress.getByName(application.ip);
-                DatagramPacket packet = new DatagramPacket(datas, datas.length,
-                        pcAddress, PORT);
+                InetAddress pcAddress = InetAddress
+                        .getByName(application.ip);
+                DatagramPacket packet = new DatagramPacket(datas,
+                        datas.length, pcAddress, PORT);
                 socket.send(packet);
             } catch (Exception e) {
                 e.printStackTrace();

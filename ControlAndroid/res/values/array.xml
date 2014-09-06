@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="keyboard">
+        <item>Up</item>
+        <item>Down</item>
+        <item>Left</item>
+        <item>Right</item>
+        <item>Ctrl+Z</item>
+        <item>Ctrl+C</item>
+        <item>Ctrl+V</item>
+        <item>Ctrl+S</item>
+    </string-array>
+
+</resources>
