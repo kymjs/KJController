@@ -17,7 +17,6 @@ import com.kymjs.mobile.ui.fragment.SetKey;
 public class Main extends SlidTemplet {
 
     private ResideMenuItem item1;
-    private ResideMenuItem item2;
     private ResideMenuItem item3;
     private ResideMenuItem item4;
     private ResideMenuItem item5;
@@ -35,8 +34,6 @@ public class Main extends SlidTemplet {
         changeFragment(new MainFragment());
         item1 = new ResideMenuItem(this, R.drawable.ic_launcher,
                 "自定按键");
-        item2 = new ResideMenuItem(this, R.drawable.ic_launcher,
-                "模式设置");
         item3 = new ResideMenuItem(this, R.drawable.ic_launcher,
                 "主题选择");
         item4 = new ResideMenuItem(this, R.drawable.ic_launcher,
@@ -44,14 +41,13 @@ public class Main extends SlidTemplet {
         item5 = new ResideMenuItem(this, R.drawable.ic_launcher,
                 "立即退出");
         // 必须调用initSlidMenu()才能初始化菜单项
-        initSlidMenus(item1, item2, item3, item4, item5);
+        initSlidMenus(item1, item3, item4, item5);
     }
 
     @Override
     public void onSlidMenuClick(View v) {
         if (v == item1) {
             changeFragment(new SetKey());
-        } else if (v == item2) {
         } else if (v == item3) {
         } else if (v == item4) {
         } else if (v == item5) {

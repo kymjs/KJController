@@ -14,7 +14,7 @@ import android.widget.EditText;
 
 import com.kymjs.mobile.AppContext;
 import com.kymjs.mobile.R;
-import com.kymjs.mobile.ui.activity.ControlActivity;
+import com.kymjs.mobile.ui.activity.GamePadMode;
 import com.kymjs.mobile.ui.activity.Main;
 
 public class MainFragment extends BaseFragment {
@@ -66,7 +66,7 @@ public class MainFragment extends BaseFragment {
             if (SystemTool.checkNet(aty) && SystemTool.isWiFi(aty)) {
                 ((AppContext) aty.getApplication()).ip = mEtPcIp
                         .getText().toString();
-                aty.showActivity(aty, ControlActivity.class);
+                aty.showActivity(aty, GamePadMode.class);
             } else {
                 ViewInject
                         .toast(getString(R.string.connection_error));

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"    android:orientation="horizontal" >
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="7.5" >
+
+        <View
+            android:id="@+id/gamepad_mouse"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/gamepad_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:padding="@dimen/dimen_5dp"
+            android:src="@drawable/titlebar_back" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="2.5" >
+
+        <View
+            android:id="@+id/gamepad_keyboder_center"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/dimen_15dp" />
+
+        <ImageView
+            android:id="@+id/gamepad_keyboder_up"
+            style="@style/gamepad_imageview"
+            android:layout_above="@+id/gamepad_keyboder_center"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:id="@+id/gamepad_keyboder_down"
+            style="@style/gamepad_imageview"
+            android:layout_below="@+id/gamepad_keyboder_center"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:id="@+id/gamepad_keyboder_left"
+            style="@style/gamepad_imageview"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/gamepad_keyboder_center" />
+
+        <ImageView
+            android:id="@+id/gamepad_keyboder_right"
+            style="@style/gamepad_imageview"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/gamepad_keyboder_center" />
+    </RelativeLayout>
+
+</LinearLayout>
