@@ -33,10 +33,9 @@
                 android:text="音量＋" />
 
             <TextView
-                android:id="@+id/setkey_tv_volume_up"
+                android:id="@+id/setkey_touch_tv_volume_up"
                 style="@style/setkey_textview"
-                android:layout_alignParentRight="true"
-                android:text="设置" />
+                android:layout_alignParentRight="true" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -53,10 +52,9 @@
                 android:text="音量－" />
 
             <TextView
-                android:id="@+id/setkey_tv_volume_down"
+                android:id="@+id/setkey_touch_tv_volume_down"
                 style="@style/setkey_textview"
-                android:layout_alignParentRight="true"
-                android:text="设置" />
+                android:layout_alignParentRight="true" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -73,10 +71,9 @@
                 android:text="菜单键" />
 
             <TextView
-                android:id="@+id/setkey_tv_menu"
+                android:id="@+id/setkey_touch_tv_menu"
                 style="@style/setkey_textview"
-                android:layout_alignParentRight="true"
-                android:text="设置" />
+                android:layout_alignParentRight="true" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -93,10 +90,209 @@
                 android:text="返回键" />
 
             <TextView
-                android:id="@+id/setkey_tv_back"
+                android:id="@+id/setkey_touch_tv_back"
                 style="@style/setkey_textview"
-                android:layout_alignParentRight="true"
-                android:text="设置" />
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical|left"
+            android:padding="@dimen/dimen_10dp"
+            android:text="手柄模式"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:id="@+id/setting_gamepad_up"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_top"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="上" />
+
+            <TextView
+                android:id="@+id/setkey_gamepad_tv_up"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_gamepad_down"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_mid"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="下" />
+
+            <TextView
+                android:id="@+id/setkey_gamepad_tv_down"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_gamepad_left"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_mid"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="左" />
+
+            <TextView
+                android:id="@+id/setkey_gamepad_tv_left"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_gamepad_right"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_mid"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="右" />
+
+            <TextView
+                android:id="@+id/setkey_gamepad_tv_right"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_gamepad_w"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_mid"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="W" />
+
+            <TextView
+                android:id="@+id/setkey_gamepad_tv_w"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_gamepad_s"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_mid"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="S" />
+
+            <TextView
+                android:id="@+id/setkey_gamepad_tv_s"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_gamepad_a"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_mid"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="A" />
+
+            <TextView
+                android:id="@+id/setkey_gamepad_tv_a"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_gamepad_d"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_mid"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="D" />
+
+            <TextView
+                android:id="@+id/setkey_gamepad_tv_d"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_gamepad_menu_key"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_mid"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="菜单键" />
+
+            <TextView
+                android:id="@+id/setkey_gamepad_tv_menu"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/setting_gamepad_back_key"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_settings_bottom"
+            android:paddingLeft="@dimen/dimen_10dp"
+            android:paddingRight="@dimen/dimen_10dp" >
+
+            <TextView
+                style="@style/setkey_textview"
+                android:layout_alignParentLeft="true"
+                android:text="返回键" />
+
+            <TextView
+                android:id="@+id/setkey_gamepad_tv_back"
+                style="@style/setkey_textview"
+                android:layout_alignParentRight="true" />
         </RelativeLayout>
     </LinearLayout>
 

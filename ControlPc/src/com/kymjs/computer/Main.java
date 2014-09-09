@@ -25,16 +25,16 @@ import javax.swing.JTextField;
 public class Main extends JFrame {
     private static final long serialVersionUID = 1L;
     private static final int port = 8899;
-    
+
     private JTextField messagebox;
     private int menux = 0; // menux信号标志 0表示未开启 1表示开启 2表示暂停
     private boolean btnIsStart = false;
     private ServerThread serverthread; // 阻塞态线程
-    
+
     public static void main(String[] args) {
         new Main();
     }
-    
+
     public Main() {
         super();
         initLayout();
@@ -43,7 +43,7 @@ public class Main extends JFrame {
         initExplain();
         this.setVisible(true);
     }
-    
+
     /**
      * 初始化窗口布局
      */
@@ -60,7 +60,7 @@ public class Main extends JFrame {
                 (screenHeight - frm_Height) / 2); // 居中显示窗口
         getContentPane().setLayout(null);
     }
-    
+
     /**
      * 初始化IP信息
      */
@@ -81,7 +81,7 @@ public class Main extends JFrame {
         }
         getContentPane().add(label);
     }
-    
+
     /**
      * 开/关按钮
      */
@@ -101,7 +101,7 @@ public class Main extends JFrame {
             }
         });
     }
-    
+
     /**
      * 初始化说明Text
      */
@@ -110,13 +110,13 @@ public class Main extends JFrame {
         label3.setText("请在手机端输入本机IP");
         label3.setBounds(40, 100, 280, 25);
         getContentPane().add(label3);
-        
+
         messagebox = new JTextField();
         messagebox.setBounds(10, 130, 190, 25);
         messagebox.setEnabled(false);
         getContentPane().add(messagebox);
     }
-    
+
     public void start() {
         btnIsStart = true;
         if (menux == 0) {
@@ -131,7 +131,7 @@ public class Main extends JFrame {
             messagebox.setText("控制服务已恢复");
         }
     }
-    
+
     public void stop() {
         btnIsStart = false;
         if (menux == 1) {
@@ -140,12 +140,12 @@ public class Main extends JFrame {
             messagebox.setText("控制服务已暂停");
         }
     }
-    
+
     public class ServerThread extends Thread {
         public void run() {
             connection();
         }
-        
+
         private void connection() {
             DatagramSocket socket;
             try {
@@ -157,7 +157,8 @@ public class Main extends JFrame {
                 return;
             }
             byte data[] = new byte[1024];
-            DatagramPacket packet = new DatagramPacket(data, data.length);
+            DatagramPacket packet = new DatagramPacket(data,
+                    data.length);
             try {
                 while (true) {
                     socket.receive(packet);
@@ -192,7 +193,7 @@ public class Main extends JFrame {
             }
             socket.close();
         }
-        
+
         /**
          * 处理鼠标移动
          */
@@ -202,7 +203,7 @@ public class Main extends JFrame {
             String y = args[1];
             float px = Float.valueOf(x);
             float py = Float.valueOf(y);
-            
+
             PointerInfo pinfo = MouseInfo.getPointerInfo(); // 得到鼠标的坐标
             java.awt.Point p = pinfo.getLocation();
             double mx = p.getX(); // 得到当前电脑鼠标的坐标
@@ -213,7 +214,7 @@ public class Main extends JFrame {
             } catch (AWTException e) {
             }
         }
-        
+
         /**
          * 左键事件处理
          */
@@ -235,7 +236,7 @@ public class Main extends JFrame {
                 robot.mouseRelease(InputEvent.BUTTON1_MASK);
             }
         }
-        
+
         /**
          * 右键事件处理
          */
@@ -257,7 +258,7 @@ public class Main extends JFrame {
                 robot.mouseRelease(InputEvent.BUTTON3_MASK);
             }
         }
-        
+
         /**
          * 鼠标滚轮事件处理
          */
@@ -274,7 +275,7 @@ public class Main extends JFrame {
                 robot.mouseWheel(1);
             }
         }
-        
+
         /**
          * 按键事件处理
          */
@@ -297,7 +298,7 @@ public class Main extends JFrame {
                 keyBoard(KeyEvent.VK_CONTROL, KeyEvent.VK_S);
             }
         }
-        
+
         /**
          * 单击
          */
@@ -311,7 +312,7 @@ public class Main extends JFrame {
             robot.keyPress(key);
             robot.keyRelease(key);
         }
-        
+
         /**
          * 组合键
          */

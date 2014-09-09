@@ -40,7 +40,7 @@
     </style>
 
     <style name="setkey_textview">
-        <item name="android:textSize">18.0sp</item>
+        <item name="android:textSize">16.0sp</item>
         <item name="android:textColor">#ff5e5546</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
