@@ -23,7 +23,7 @@ import com.kymjs.mobile.R;
 import com.kymjs.mobile.ui.activity.Main;
 
 public class SetKey extends BaseFragment {
-
+    
     @BindView(id = R.id.setting_touch_volume_up, click = true)
     private RelativeLayout mLayoutTouchUp;
     @BindView(id = R.id.setting_touch_volume_down, click = true)
@@ -40,7 +40,7 @@ public class SetKey extends BaseFragment {
     private TextView mTvTouchMenu;
     @BindView(id = R.id.setkey_touch_tv_back)
     private TextView mTvTouchBack;
-
+    
     @BindView(id = R.id.setting_gamepad_up, click = true)
     private RelativeLayout mLayoutGamePadUp;
     @BindView(id = R.id.setting_gamepad_down, click = true)
@@ -81,26 +81,26 @@ public class SetKey extends BaseFragment {
     private TextView mTvGamePadMenu;
     @BindView(id = R.id.setkey_gamepad_tv_back)
     private TextView mTvGamePadBack;
-
+    
     private String[] menus;
-
+    
     private Main aty;
     private AppContext application;
-
+    
     @Override
-    protected View inflaterView(LayoutInflater inflater,
-            ViewGroup arg1, Bundle arg2) {
+    protected View inflaterView(LayoutInflater inflater, ViewGroup arg1,
+            Bundle arg2) {
         aty = (Main) getActivity();
         application = (AppContext) getActivity().getApplication();
         return inflater.inflate(R.layout.frag_setkey, null);
     }
-
+    
     @Override
     protected void initData() {
         super.initData();
         menus = getResources().getStringArray(R.array.keyboard);
     }
-
+    
     @Override
     protected void initWidget(View parentView) {
         super.initWidget(parentView);
@@ -119,7 +119,7 @@ public class SetKey extends BaseFragment {
         mTvGamePadA.setText(application.keyGamePadA);
         mTvGamePadD.setText(application.keyGamePadD);
     }
-
+    
     @Override
     protected void widgetClick(View v) {
         super.widgetClick(v);
@@ -130,8 +130,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyVolumeUp = hotkey;
                     mTvTouchUp.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.VOLUME_UP_MSG_KEY, hotkey);
                 }
             });
@@ -142,8 +141,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyVolumeDown = hotkey;
                     mTvTouchDown.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.VOLUME_DOWN_MSG_KEY, hotkey);
                 }
             });
@@ -154,8 +152,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyMenu = hotkey;
                     mTvTouchMenu.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.MENU_MSG_KEY, hotkey);
                 }
             });
@@ -166,8 +163,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyBack = hotkey;
                     mTvTouchBack.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.BACK_MSG_KEY, hotkey);
                 }
             });
@@ -178,8 +174,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyGamePadW = hotkey;
                     mTvGamePadW.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.GAMEPAD_W_MSG_KEY, hotkey);
                 }
             });
@@ -190,8 +185,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyGamePadS = hotkey;
                     mTvGamePadS.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.GAMEPAD_S_MSG_KEY, hotkey);
                 }
             });
@@ -202,8 +196,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyGamePadA = hotkey;
                     mTvGamePadA.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.GAMEPAD_A_MSG_KEY, hotkey);
                 }
             });
@@ -214,8 +207,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyGamePadD = hotkey;
                     mTvGamePadD.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.GAMEPAD_D_MSG_KEY, hotkey);
                 }
             });
@@ -226,8 +218,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyGamePadUp = hotkey;
                     mTvGamePadUp.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.GAMEPAD_UP_MSG_KEY, hotkey);
                 }
             });
@@ -238,8 +229,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyGamePadDown = hotkey;
                     mTvGamePadDown.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.GAMEPAD_DOWN_MSG_KEY, hotkey);
                 }
             });
@@ -250,8 +240,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyGamePadLeft = hotkey;
                     mTvGamePadLeft.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.GAMEPAD_LEFT_MSG_KEY, hotkey);
                 }
             });
@@ -262,8 +251,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyGamePadRight = hotkey;
                     mTvGamePadRight.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.GAMEPAD_RIGHT_MSG_KEY, hotkey);
                 }
             });
@@ -274,8 +262,7 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyGamePadMenu = hotkey;
                     mTvGamePadMenu.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.GAMEPAD_MENU_MSG_KEY, hotkey);
                 }
             });
@@ -286,22 +273,21 @@ public class SetKey extends BaseFragment {
                 public void onItemClickListener(String hotkey) {
                     application.keyGamePadBack = hotkey;
                     mTvGamePadBack.setText(hotkey);
-                    PreferenceHelper.write(aty,
-                            APPConfig.KEYBOARD_KEY,
+                    PreferenceHelper.write(aty, APPConfig.KEYBOARD_KEY,
                             APPConfig.GAMEPAD_BACK_MSG_KEY, hotkey);
                 }
             });
             break;
         }
     }
-
+    
     private void getDialogListView(final ListListener l) {
         final ListView listView = (ListView) View.inflate(aty,
                 R.layout.listview, null);
         listView.setAdapter(new ArrayAdapter<String>(aty,
                 android.R.layout.simple_list_item_1, menus));
-        final AlertDialog dialog = ViewInject.create().getDialogView(
-                aty, null, listView);
+        final AlertDialog dialog = ViewInject.create().getDialogView(aty, null,
+                listView);
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
@@ -311,7 +297,7 @@ public class SetKey extends BaseFragment {
             }
         });
     }
-
+    
     private interface ListListener {
         void onItemClickListener(String hotkey);
     }

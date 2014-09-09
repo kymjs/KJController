@@ -16,7 +16,7 @@ public class APPConfig {
     public static final String GAMEPAD_DOWN_MSG_KEY = "gamepad_down";
     public static final String GAMEPAD_LEFT_MSG_KEY = "gamepad_left";
     public static final String GAMEPAD_RIGHT_MSG_KEY = "gamepad_right";
-
+    
     public static int KEYBOARD_PAGE_UP = 0;
     public static int KEYBOARD_PAGE_DOWN = 1;
     public static int KEYBOARD_PAGE_LEFT = 2;

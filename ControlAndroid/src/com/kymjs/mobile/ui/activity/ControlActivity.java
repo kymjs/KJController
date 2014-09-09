@@ -11,18 +11,23 @@ import org.kymjs.aframe.ui.ViewInject;
 import org.kymjs.aframe.ui.activity.BaseActivity;
 
 import android.view.KeyEvent;
-import android.view.View.OnLongClickListener;
 
 import com.kymjs.mobile.AppContext;
 
-public abstract class ControlActivity extends BaseActivity implements
-        OnLongClickListener {
+public abstract class ControlActivity extends BaseActivity {
     public static int PORT = 8899;
-
+    protected static final String LeftKeyDown = "leftButton:down";
+    protected static final String LeftKeyUp = "leftButton:release";
+    protected static final String RightKeyDown = "rightButton:down";
+    protected static final String RightKeyUp = "rightButton:release";
+    protected static final String MouseWheel = "mousewheel:";
+    protected static final String MouseMove = "mouse:";
+    protected static final String KeyBoard = "keyboard:";
+    
     protected AppContext application;
     private DatagramSocket socket;
     private ThreadPoolExecutor threadPool;
-
+    
     @Override
     protected void initData() {
         super.initData();
@@ -36,52 +41,41 @@ public abstract class ControlActivity extends BaseActivity implements
             skipActivity(aty, Main.class);
         }
     }
-
+    
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         handleKeyBoardEvent(keyCode, event);
         return true;
     }
-
+    
     /**
      * 处理按键事件
      */
-    private void handleKeyBoardEvent(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            sendMessage("keyboard:" + application.keyBack);
-        } else if (keyCode == KeyEvent.KEYCODE_MENU) {
-            sendMessage("keyboard:" + application.keyMenu);
-        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-            sendMessage("keyboard:" + application.keyVolumeUp);
-        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-            sendMessage("keyboard:" + application.keyVolumeDown);
-        }
-    }
-
+    protected abstract void handleKeyBoardEvent(int keyCode, KeyEvent event);
+    
     /**
      * net request
      */
     protected void sendMessage(String datas) {
         threadPool.submit(new SendCommandThread(datas.getBytes()));
     }
-
+    
     /**
      * 向电脑发送命令的线程
      */
     private class SendCommandThread implements Runnable {
         private byte[] datas;
-
+        
         public SendCommandThread(byte[] datas) {
             this.datas = datas;
         }
-
+        
         @Override
         public void run() {
             try {
-                InetAddress pcAddress = InetAddress
-                        .getByName(application.ip);
-                DatagramPacket packet = new DatagramPacket(datas,
-                        datas.length, pcAddress, PORT);
+                InetAddress pcAddress = InetAddress.getByName(application.ip);
+                DatagramPacket packet = new DatagramPacket(datas, datas.length,
+                        pcAddress, PORT);
                 socket.send(packet);
             } catch (Exception e) {
                 e.printStackTrace();
