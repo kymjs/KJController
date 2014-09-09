@@ -34,10 +34,40 @@ public class Splash extends BaseSplash {
                 APPConfig.VOLUME_DOWN_MSG_KEY, menus[4]);
         application.keyBack = PreferenceHelper.readString(aty,
                 APPConfig.KEYBOARD_KEY, APPConfig.BACK_MSG_KEY,
-                menus[0]);
+                menus[4]);
         application.keyMenu = PreferenceHelper.readString(aty,
                 APPConfig.KEYBOARD_KEY, APPConfig.MENU_MSG_KEY,
+                menus[7]);
+        application.keyGamePadA = PreferenceHelper.readString(aty,
+                APPConfig.KEYBOARD_KEY, APPConfig.GAMEPAD_A_MSG_KEY,
+                menus[10]);
+        application.keyGamePadW = PreferenceHelper.readString(aty,
+                APPConfig.KEYBOARD_KEY, APPConfig.GAMEPAD_W_MSG_KEY,
+                menus[8]);
+        application.keyGamePadS = PreferenceHelper.readString(aty,
+                APPConfig.KEYBOARD_KEY, APPConfig.GAMEPAD_S_MSG_KEY,
+                menus[9]);
+        application.keyGamePadD = PreferenceHelper.readString(aty,
+                APPConfig.KEYBOARD_KEY, APPConfig.GAMEPAD_D_MSG_KEY,
+                menus[11]);
+        application.keyGamePadBack = PreferenceHelper.readString(aty,
+                APPConfig.KEYBOARD_KEY,
+                APPConfig.GAMEPAD_BACK_MSG_KEY, menus[4]);
+        application.keyGamePadMenu = PreferenceHelper.readString(aty,
+                APPConfig.KEYBOARD_KEY,
+                APPConfig.GAMEPAD_MENU_MSG_KEY, menus[7]);
+        application.keyGamePadUp = PreferenceHelper.readString(aty,
+                APPConfig.KEYBOARD_KEY, APPConfig.GAMEPAD_UP_MSG_KEY,
                 menus[0]);
+        application.keyGamePadDown = PreferenceHelper.readString(aty,
+                APPConfig.KEYBOARD_KEY,
+                APPConfig.GAMEPAD_DOWN_MSG_KEY, menus[1]);
+        application.keyGamePadLeft = PreferenceHelper.readString(aty,
+                APPConfig.KEYBOARD_KEY,
+                APPConfig.GAMEPAD_LEFT_MSG_KEY, menus[2]);
+        application.keyGamePadRight = PreferenceHelper.readString(
+                aty, APPConfig.KEYBOARD_KEY,
+                APPConfig.GAMEPAD_RIGHT_MSG_KEY, menus[3]);
     }
 
     @Override

@@ -10,6 +10,10 @@
         <item>Ctrl+C</item>
         <item>Ctrl+V</item>
         <item>Ctrl+S</item>
+        <item>W</item>
+        <item>S</item>
+        <item>A</item>
+        <item>D</item>
     </string-array>
 
 </resources>

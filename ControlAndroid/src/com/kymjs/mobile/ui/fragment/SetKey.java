@@ -108,6 +108,16 @@ public class SetKey extends BaseFragment {
         mTvTouchDown.setText(application.keyVolumeDown);
         mTvTouchMenu.setText(application.keyMenu);
         mTvTouchBack.setText(application.keyBack);
+        mTvGamePadBack.setText(application.keyGamePadBack);
+        mTvGamePadMenu.setText(application.keyGamePadMenu);
+        mTvGamePadUp.setText(application.keyGamePadUp);
+        mTvGamePadDown.setText(application.keyGamePadDown);
+        mTvGamePadLeft.setText(application.keyGamePadLeft);
+        mTvGamePadRight.setText(application.keyGamePadRight);
+        mTvGamePadW.setText(application.keyGamePadW);
+        mTvGamePadS.setText(application.keyGamePadS);
+        mTvGamePadA.setText(application.keyGamePadA);
+        mTvGamePadD.setText(application.keyGamePadD);
     }
 
     @Override
