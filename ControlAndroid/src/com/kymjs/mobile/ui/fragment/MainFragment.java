@@ -15,6 +15,7 @@ import android.widget.EditText;
 import com.kymjs.mobile.AppContext;
 import com.kymjs.mobile.R;
 import com.kymjs.mobile.ui.activity.GamePadMode;
+import com.kymjs.mobile.ui.activity.GamePadModeTraditional;
 import com.kymjs.mobile.ui.activity.Main;
 import com.kymjs.mobile.ui.activity.TouchPadMode;
 import com.kymjs.mobile.ui.widget.ScrollLayout;
@@ -88,7 +89,7 @@ public class MainFragment extends BaseFragment {
             aty.showActivity(aty, TouchPadMode.class);
             break;
         case 1:
-            aty.showActivity(aty, GamePadMode.class);
+            aty.showActivity(aty, GamePadModeTraditional.class);
             break;
         case 2:
             aty.showActivity(aty, GamePadMode.class);

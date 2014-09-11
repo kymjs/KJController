@@ -48,7 +48,7 @@ public class Main extends JFrame {
      * 初始化窗口布局
      */
     private void initLayout() {
-        setTitle("kymjs手机远程控制");
+        setTitle("kymjs接收器");
         setSize(230, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension dimension = getToolkit().getScreenSize(); // 获得Dimension对象
@@ -280,29 +280,131 @@ public class Main extends JFrame {
          * 按键事件处理
          */
         public void keyBoard(String info) {
-            if ("Up".equals(info)) {
-                keyBoard(KeyEvent.VK_UP);
-            } else if ("Down".equals(info)) {
-                keyBoard(KeyEvent.VK_DOWN);
-            } else if ("Left".equals(info)) {
-                keyBoard(KeyEvent.VK_LEFT);
-            } else if ("Right".equals(info)) {
-                keyBoard(KeyEvent.VK_RIGHT);
-            } else if ("Ctrl+Z".equals(info)) {
-                keyBoard(KeyEvent.VK_CONTROL, KeyEvent.VK_Z);
-            } else if ("Ctrl+C".equals(info)) {
-                keyBoard(KeyEvent.VK_CONTROL, KeyEvent.VK_C);
-            } else if ("Ctrl+V".equals(info)) {
-                keyBoard(KeyEvent.VK_CONTROL, KeyEvent.VK_V);
-            } else if ("Ctrl+S".equals(info)) {
-                keyBoard(KeyEvent.VK_CONTROL, KeyEvent.VK_S);
+            switch (info) {
+            case "Space":
+                keyBoardClick(KeyEvent.VK_SPACE);
+                break;
+            case "Up":
+                keyBoardClick(KeyEvent.VK_UP);
+                break;
+            case "UpPress":
+                keyBoardPress(KeyEvent.VK_UP);
+                break;
+            case "UpRelease":
+                keyBoardRelease(KeyEvent.VK_UP);
+                break;
+            case "Down":
+                keyBoardClick(KeyEvent.VK_DOWN);
+                break;
+            case "DownPress":
+                keyBoardPress(KeyEvent.VK_DOWN);
+                break;
+            case "DownRelease":
+                keyBoardRelease(KeyEvent.VK_DOWN);
+                break;
+            case "Left":
+                keyBoardClick(KeyEvent.VK_LEFT);
+                break;
+            case "LeftPress":
+                keyBoardPress(KeyEvent.VK_LEFT);
+                break;
+            case "LeftRelease":
+                keyBoardRelease(KeyEvent.VK_LEFT);
+                break;
+            case "Right":
+                keyBoardClick(KeyEvent.VK_RIGHT);
+                break;
+            case "RightPress":
+                keyBoardPress(KeyEvent.VK_RIGHT);
+                break;
+            case "RightRelease":
+                keyBoardRelease(KeyEvent.VK_RIGHT);
+                break;
+            case "W":
+                keyBoardClick(KeyEvent.VK_W);
+                break;
+            case "WPress":
+                keyBoardPress(KeyEvent.VK_W);
+                break;
+            case "WRelease":
+                keyBoardRelease(KeyEvent.VK_W);
+                break;
+            case "S":
+                keyBoardClick(KeyEvent.VK_S);
+                break;
+            case "SPress":
+                keyBoardPress(KeyEvent.VK_S);
+                break;
+            case "SRelease":
+                keyBoardRelease(KeyEvent.VK_S);
+                break;
+            case "A":
+                keyBoardClick(KeyEvent.VK_A);
+                break;
+            case "APress":
+                keyBoardPress(KeyEvent.VK_A);
+                break;
+            case "ARelease":
+                keyBoardRelease(KeyEvent.VK_A);
+                break;
+            case "D":
+                keyBoardClick(KeyEvent.VK_D);
+                break;
+            case "DPress":
+                keyBoardPress(KeyEvent.VK_D);
+                break;
+            case "DRelease":
+                keyBoardRelease(KeyEvent.VK_D);
+                break;
+            case "Ctrl+Z":
+                keyBoardGroup(KeyEvent.VK_CONTROL, KeyEvent.VK_Z);
+                break;
+            case "Ctrl+C":
+                keyBoardGroup(KeyEvent.VK_CONTROL, KeyEvent.VK_C);
+                break;
+            case "Ctrl+V":
+                keyBoardGroup(KeyEvent.VK_CONTROL, KeyEvent.VK_V);
+                break;
+            case "Ctrl+S":
+                keyBoardGroup(KeyEvent.VK_CONTROL, KeyEvent.VK_S);
+                break;
             }
+        }
+
+        /**
+         * 按下
+         * 
+         * @param key
+         */
+        private void keyBoardPress(int key) {
+            java.awt.Robot robot = null;
+            try {
+                robot = new Robot();
+            } catch (AWTException e) {
+                return;
+            }
+            robot.keyPress(key);
+        }
+
+        /**
+         * 抬起
+         * 
+         * @param key
+         */
+        private void keyBoardRelease(int key) {
+            java.awt.Robot robot = null;
+            try {
+                robot = new Robot();
+            } catch (AWTException e) {
+                return;
+            }
+            robot.keyRelease(key);
         }
 
         /**
          * 单击
          */
-        private void keyBoard(int key) {
+        private void keyBoardClick(int key) {
             java.awt.Robot robot = null;
             try {
                 robot = new Robot();
@@ -316,7 +418,7 @@ public class Main extends JFrame {
         /**
          * 组合键
          */
-        private void keyBoard(int keyPress, int key) {
+        private void keyBoardGroup(int keyPress, int key) {
             java.awt.Robot robot = null;
             try {
                 robot = new Robot();

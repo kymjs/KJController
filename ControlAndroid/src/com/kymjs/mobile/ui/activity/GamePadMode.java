@@ -21,23 +21,23 @@ public class GamePadMode extends TouchControlActivity {
     private ImageView mKeyBoardLeft;
     @BindView(id = R.id.gamepad_keyboard_right, click = true)
     private ImageView mKeyBoardRight;
-    
+
     public GamePadMode() {
         setAllowFullScreen(true);
         setHiddenActionBar(true);
         setScreenOrientation(ScreenOrientation.HORIZONTAL);
     }
-    
+
     @Override
     public void setRootView() {
         setContentView(R.layout.aty_gamepad);
     }
-    
+
     @Override
     protected View setTouchView() {
         return mMouseTouch;
     }
-    
+
     @Override
     public void widgetClick(View v) {
         super.widgetClick(v);
@@ -59,7 +59,7 @@ public class GamePadMode extends TouchControlActivity {
             break;
         }
     }
-    
+
     @Override
     protected void handleKeyBoardEvent(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
