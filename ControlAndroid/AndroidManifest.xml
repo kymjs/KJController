@@ -7,7 +7,7 @@
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.RESTART_PACKAGES" />
 	<application android:name="com.kymjs.mobile.AppContext"
-		android:allowBackup="true" android:icon="@drawable/ic_launcher"
+		android:allowBackup="true" android:icon="@drawable/icon"
 		android:label="@string/app_name" android:theme="@style/AppTheme">
 		<activity android:name="com.kymjs.mobile.ui.activity.Splash"
 			android:label="@string/app_name">
@@ -20,6 +20,7 @@
 
 		<activity android:name="com.kymjs.mobile.ui.activity.Main" />
 		<activity android:name="com.kymjs.mobile.ui.activity.ControlActivity" />
+		<activity android:name="com.kymjs.mobile.ui.activity.TouchPadMode" />
 		<activity android:name="com.kymjs.mobile.ui.activity.GamePadMode"
 			android:screenOrientation="landscape" />
 	</application>

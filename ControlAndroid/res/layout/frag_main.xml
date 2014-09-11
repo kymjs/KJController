@@ -1,8 +1,9 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:layout_height="match_parent" >
+    android:orientation="vertical" >
 
     <EditText
         android:id="@+id/main_et_pcip"
@@ -12,13 +13,51 @@
         android:layout_margin="15dp"
         android:hint="@string/str_main_setip" />
 
+    <TextView
+        android:id="@+id/main_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="@string/str_main_select_control_mode" />
+
+    <com.kymjs.mobile.ui.widget.ScrollLayout
+        android:id="@+id/main_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:contentDescription="@null" >
+
+        <ImageView
+            android:id="@+id/main_img_pager1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@drawable/ic_touch_mode" />
+
+        <ImageView
+            android:id="@+id/main_img_pager2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@drawable/ic_gamepad_mode" />
+
+        <ImageView
+            android:id="@+id/main_img_pager3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@drawable/ic_gamepad" />
+    </com.kymjs.mobile.ui.widget.ScrollLayout>
+
     <Button
         android:id="@+id/main_btn_submit"
         style="@style/Button_Style"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_margin="20dp"
         android:background="@drawable/selector_btn_blue"
         android:text="@string/str_main_connection" />
 
-</RelativeLayout>
+</LinearLayout>

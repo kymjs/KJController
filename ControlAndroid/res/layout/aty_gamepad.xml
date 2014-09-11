@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:baselineAligned="false"    android:orientation="horizontal" >
+    android:baselineAligned="false"
+    android:orientation="horizontal" >
 
     <FrameLayout
         android:layout_width="0dp"
@@ -31,7 +32,7 @@
         <View
             android:id="@+id/gamepad_keyboard_center"
             android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:layout_centerInParent="true"
             android:layout_margin="@dimen/dimen_15dp" />
 
@@ -39,25 +40,29 @@
             android:id="@+id/gamepad_keyboard_up"
             style="@style/gamepad_imageview"
             android:layout_above="@+id/gamepad_keyboard_center"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/selector_btn_up" />
 
         <ImageView
             android:id="@+id/gamepad_keyboard_down"
             style="@style/gamepad_imageview"
             android:layout_below="@+id/gamepad_keyboard_center"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/selector_btn_down" />
 
         <ImageView
             android:id="@+id/gamepad_keyboard_left"
             style="@style/gamepad_imageview"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/gamepad_keyboard_center" />
+            android:layout_toLeftOf="@+id/gamepad_keyboard_center"
+            android:src="@drawable/selector_btn_left" />
 
         <ImageView
             android:id="@+id/gamepad_keyboard_right"
             style="@style/gamepad_imageview"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/gamepad_keyboard_center" />
+            android:layout_toRightOf="@+id/gamepad_keyboard_center"
+            android:src="@drawable/selector_btn_right" />
     </RelativeLayout>
 
 </LinearLayout>

@@ -32,16 +32,17 @@ public class Main extends SlidTemplet {
     protected void initWidget() {
         super.initWidget();
         changeFragment(new MainFragment());
-        item1 = new ResideMenuItem(this, R.drawable.ic_launcher,
-                "自定按键");
-        item3 = new ResideMenuItem(this, R.drawable.ic_launcher,
-                "主题选择");
-        item4 = new ResideMenuItem(this, R.drawable.ic_launcher,
-                "关于应用");
-        item5 = new ResideMenuItem(this, R.drawable.ic_launcher,
-                "立即退出");
+        item1 = new ResideMenuItem(this, "自定按键");
+        item3 = new ResideMenuItem(this, "主题选择");
+        item4 = new ResideMenuItem(this, "关于应用");
+        item5 = new ResideMenuItem(this, "立即退出");
+        item1.setTextColor(0xffffffff);
+        item3.setTextColor(0xffffffff);
+        item4.setTextColor(0xffffffff);
+        item5.setTextColor(0xffffffff);
         // 必须调用initSlidMenu()才能初始化菜单项
         initSlidMenus(item1, item3, item4, item5);
+        resideMenu.setBackground(R.drawable.pic_bg_slidpage);
     }
 
     @Override
