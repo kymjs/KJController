@@ -33,6 +33,7 @@ public class Main extends SlidTemplet {
         super.initWidget();
         changeFragment(new MainFragment());
         item1 = new ResideMenuItem(this, "自定按键");
+        item3 = new ResideMenuItem(this, "更换主题");
         item4 = new ResideMenuItem(this, "关于应用");
         item5 = new ResideMenuItem(this, "立即退出");
         item1.setTextColor(0xffffffff);
