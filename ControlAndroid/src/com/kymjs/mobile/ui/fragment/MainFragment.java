@@ -14,6 +14,7 @@ import android.widget.EditText;
 
 import com.kymjs.mobile.AppContext;
 import com.kymjs.mobile.R;
+import com.kymjs.mobile.ui.activity.CarMode;
 import com.kymjs.mobile.ui.activity.GamePadMode;
 import com.kymjs.mobile.ui.activity.GamePadModeTraditional;
 import com.kymjs.mobile.ui.activity.Main;
@@ -93,6 +94,9 @@ public class MainFragment extends BaseFragment {
             break;
         case 2:
             aty.showActivity(aty, GamePadMode.class);
+            break;
+        case 3:
+            aty.showActivity(aty, CarMode.class);
             break;
         }
     }

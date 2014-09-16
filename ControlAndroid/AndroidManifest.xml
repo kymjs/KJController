@@ -22,6 +22,8 @@
 		<activity android:name="com.kymjs.mobile.ui.activity.ControlActivity" />
 		<activity android:name="com.kymjs.mobile.ui.activity.GamePadModeTraditional"
 			android:screenOrientation="landscape" />
+		<activity android:name="com.kymjs.mobile.ui.activity.CarMode"
+			android:screenOrientation="landscape" />
 		<activity android:name="com.kymjs.mobile.ui.activity.TouchPadMode" />
 		<activity android:name="com.kymjs.mobile.ui.activity.GamePadMode"
 			android:screenOrientation="landscape" />

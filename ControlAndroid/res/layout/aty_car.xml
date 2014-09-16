@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/gamepad_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:padding="@dimen/dimen_5dp"
+            android:src="@drawable/titlebar_back" />
+
+        <CheckBox
+            android:id="@+id/light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/selector_light"
+            android:button="@null" />
+
+        <ImageView
+            android:id="@+id/spaker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="65dp"
+            android:layout_toRightOf="@+id/light"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_speaker_off" />
+
+        <ImageView
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="65dp"
+            android:layout_toLeftOf="@+id/light"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_more" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5" >
+
+            <View
+                android:id="@+id/gamepad_left_center"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/dimen_15dp" />
+
+            <ImageView
+                android:id="@+id/w"
+                style="@style/gamepad_imageview"
+                android:layout_above="@+id/gamepad_left_center"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@null"
+                android:src="@drawable/selector_btn_w" />
+
+            <ImageView
+                android:id="@+id/s"
+                style="@style/gamepad_imageview"
+                android:layout_below="@+id/gamepad_left_center"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@null"
+                android:src="@drawable/selector_btn_s" />
+
+            <ImageView
+                android:id="@+id/a"
+                style="@style/gamepad_imageview"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/gamepad_left_center"
+                android:contentDescription="@null"
+                android:src="@drawable/selector_btn_a" />
+
+            <ImageView
+                android:id="@+id/d"
+                style="@style/gamepad_imageview"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/gamepad_left_center"
+                android:contentDescription="@null"
+                android:src="@drawable/selector_btn_d" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3" >
+
+            <TextView
+                android:id="@+id/gamepad_space"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:background="#ffff0000"
+                android:padding="10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5" >
+
+            <View
+                android:id="@+id/gamepad_right_center"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/dimen_15dp" />
+
+            <ImageView
+                android:id="@+id/up"
+                style="@style/gamepad_imageview"
+                android:layout_above="@+id/gamepad_right_center"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@null"
+                android:src="@drawable/selector_btn_up" />
+
+            <ImageView
+                android:id="@+id/down"
+                style="@style/gamepad_imageview"
+                android:layout_below="@+id/gamepad_right_center"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@null"
+                android:src="@drawable/selector_btn_down" />
+
+            <ImageView
+                android:id="@+id/left"
+                style="@style/gamepad_imageview"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/gamepad_right_center"
+                android:contentDescription="@null"
+                android:src="@drawable/selector_btn_left" />
+
+            <ImageView
+                android:id="@+id/right"
+                style="@style/gamepad_imageview"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/gamepad_right_center"
+                android:contentDescription="@null"
+                android:src="@drawable/selector_btn_right" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

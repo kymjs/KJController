@@ -51,6 +51,14 @@
             android:contentDescription="@null"
             android:padding="10dp"
             android:src="@drawable/ic_gamepad" />
+
+        <ImageView
+            android:id="@+id/main_img_pager4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@drawable/ic_carmode" />
     </com.kymjs.mobile.ui.widget.ScrollLayout>
 
     <Button
