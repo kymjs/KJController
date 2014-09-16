@@ -4,6 +4,7 @@ import android.app.Application;
 
 public class AppContext extends Application {
     public String ip;
+    public int port;
     // 触摸板模式的自定义设置
     public String keyVolumeUp;
     public String keyVolumeDown;

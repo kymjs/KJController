@@ -5,13 +5,28 @@
     android:background="@android:color/white"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/main_et_pcip"
-        style="@style/EditText_Style"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:hint="@string/str_main_setip" />
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/main_et_pcip"
+            style="@style/EditText_Style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:hint="@string/str_main_setip" />
+
+        <EditText
+            android:id="@+id/main_et_pcport"
+            style="@style/EditText_Style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="@string/str_main_setport" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/main_tv_title"
@@ -25,6 +40,8 @@
         android:id="@+id/main_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:contentDescription="@null" >
 

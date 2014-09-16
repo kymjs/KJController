@@ -17,7 +17,6 @@ import android.view.KeyEvent;
 import com.kymjs.mobile.AppContext;
 
 public abstract class ControlActivity extends BaseActivity {
-    public static int PORT = 8899;
     protected static final String LeftKeyDown = "leftButton:down";
     protected static final String LeftKeyUp = "leftButton:release";
     protected static final String RightKeyDown = "rightButton:down";
@@ -75,7 +74,7 @@ public abstract class ControlActivity extends BaseActivity {
      */
     protected void sendMessage(String datas) {
         if (!StringUtils.isEmpty(datas)) {
-            KJLoger.debug("接收到信号：" + datas);
+            KJLoger.debug("准备发送信号：" + datas);
             threadPool
                     .submit(new SendCommandThread(datas.getBytes()));
         }
@@ -97,7 +96,7 @@ public abstract class ControlActivity extends BaseActivity {
                 InetAddress pcAddress = InetAddress
                         .getByName(application.ip);
                 DatagramPacket packet = new DatagramPacket(datas,
-                        datas.length, pcAddress, PORT);
+                        datas.length, pcAddress, application.port);
                 socket.send(packet);
             } catch (Exception e) {
                 e.printStackTrace();
