@@ -36,7 +36,7 @@
         android:gravity="center"
         android:text="@string/str_main_select_control_mode" />
 
-    <com.kymjs.mobile.ui.widget.ScrollLayout
+    <org.kymjs.aframe.ui.widget.KJViewPager
         android:id="@+id/main_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -76,7 +76,7 @@
             android:contentDescription="@null"
             android:padding="10dp"
             android:src="@drawable/ic_carmode" />
-    </com.kymjs.mobile.ui.widget.ScrollLayout>
+    </org.kymjs.aframe.ui.widget.KJViewPager>
 
     <Button
         android:id="@+id/main_btn_submit"

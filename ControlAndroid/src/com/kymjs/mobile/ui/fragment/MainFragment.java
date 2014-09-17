@@ -3,6 +3,8 @@ package com.kymjs.mobile.ui.fragment;
 import org.kymjs.aframe.ui.BindView;
 import org.kymjs.aframe.ui.ViewInject;
 import org.kymjs.aframe.ui.fragment.BaseFragment;
+import org.kymjs.aframe.ui.widget.KJViewPager;
+import org.kymjs.aframe.ui.widget.KJViewPager.OnViewChangeListener;
 import org.kymjs.aframe.utils.StringUtils;
 import org.kymjs.aframe.utils.SystemTool;
 
@@ -21,8 +23,6 @@ import com.kymjs.mobile.ui.activity.GamePadMode;
 import com.kymjs.mobile.ui.activity.GamePadModeTraditional;
 import com.kymjs.mobile.ui.activity.Main;
 import com.kymjs.mobile.ui.activity.TouchPadMode;
-import com.kymjs.mobile.ui.widget.ScrollLayout;
-import com.kymjs.mobile.ui.widget.ScrollLayout.OnViewChangeListener;
 
 public class MainFragment extends BaseFragment {
 
@@ -35,7 +35,7 @@ public class MainFragment extends BaseFragment {
     @BindView(id = R.id.main_btn_submit, click = true)
     private Button mBtnSubmit;
     @BindView(id = R.id.main_pager)
-    private ScrollLayout mContentPager;
+    private KJViewPager mContentPager;
 
     private Main aty;
 
