@@ -1,5 +1,12 @@
 package com.kymjs.mobile.ui.activity;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.math.BigInteger;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
 import org.kymjs.aframe.ui.BindView;
 
 import android.annotation.SuppressLint;
@@ -48,6 +55,33 @@ public class CarMode extends ControlActivity {
     @Override
     public void setRootView() {
         setContentView(R.layout.aty_car);
+    }
+
+    @Override
+    protected void initDataFromThread() {
+        super.initDataFromThread();
+        Socket socket = null;
+        try {
+            InetAddress ipAddress = InetAddress
+                    .getByName(application.ip);
+            socket = new Socket(ipAddress, application.port);
+            OutputStream localOutputStream = socket.getOutputStream();
+            localOutputStream.write(new BigInteger("FFEFEFEEFF", 16)
+                    .toByteArray());
+            localOutputStream.flush();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (socket != null) {
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @Override
