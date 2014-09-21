@@ -1,12 +1,5 @@
 package com.kymjs.mobile.ui.activity;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.math.BigInteger;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
-
 import org.kymjs.aframe.ui.BindView;
 
 import android.annotation.SuppressLint;
@@ -58,34 +51,8 @@ public class CarMode extends ControlActivity {
     }
 
     @Override
-    protected void initDataFromThread() {
-        super.initDataFromThread();
-        Socket socket = null;
-        try {
-            InetAddress ipAddress = InetAddress
-                    .getByName(application.ip);
-            socket = new Socket(ipAddress, application.port);
-            OutputStream localOutputStream = socket.getOutputStream();
-            localOutputStream.write(new BigInteger("FFEFEFEEFF", 16)
-                    .toByteArray());
-            localOutputStream.flush();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (socket != null) {
-                try {
-                    socket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+    protected void handleKeyBoardEvent(int keyCode, KeyEvent event) {
     }
-
-    @Override
-    protected void handleKeyBoardEvent(int keyCode, KeyEvent event) {}
 
     @Override
     protected void initWidget() {
@@ -111,8 +78,7 @@ public class CarMode extends ControlActivity {
             finish();
             break;
         case R.id.light:
-            sendMessage(light.isChecked() ? Car_LightOn
-                    : Car_LightOff);
+            sendPcMessage(light.isChecked() ? Car_LightOn : Car_LightOff);
             break;
         }
     }
@@ -124,38 +90,38 @@ public class CarMode extends ControlActivity {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {// 按下
                 switch (v.getId()) {
                 case R.id.up:
-                    sendMessage(Car_Up);
+                    sendCarMessage(Car_Up);
                     break;
                 case R.id.down:
-                    sendMessage(Car_Down);
+                    sendCarMessage(Car_Down);
                     break;
                 case R.id.left:
-                    sendMessage(Car_Left);
+                    sendCarMessage(Car_Left);
                     break;
                 case R.id.right:
-                    sendMessage(Car_Right);
+                    sendCarMessage(Car_Right);
                     break;
                 case R.id.w:
-                    sendMessage(Car_W);
+                    sendCarMessage(Car_W);
                     break;
                 case R.id.s:
-                    sendMessage(Car_S);
+                    sendCarMessage(Car_S);
                     break;
                 case R.id.a:
-                    sendMessage(Car_A);
+                    sendCarMessage(Car_A);
                     break;
                 case R.id.d:
-                    sendMessage(Car_D);
+                    sendPcMessage(Car_D);
                     break;
                 case R.id.more:
-                    sendMessage(Car_More);
+                    sendCarMessage(Car_More);
                     break;
                 case R.id.spaker:
-                    sendMessage(Car_Spaker);
+                    sendCarMessage(Car_Spaker);
                     break;
                 }
             } else if (event.getAction() == MotionEvent.ACTION_UP) {// 弹起
-                sendMessage(Car_Release);
+                sendCarMessage(Car_Release);
             }
             return true;
         }

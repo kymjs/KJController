@@ -46,16 +46,16 @@ public class GamePadMode extends TouchControlActivity {
             finish();
             break;
         case R.id.gamepad_keyboard_up:
-            sendMessage(KeyBoard + application.keyGamePadUp);
+            sendPcMessage(KeyBoard + application.keyGamePadUp);
             break;
         case R.id.gamepad_keyboard_down:
-            sendMessage(KeyBoard + application.keyGamePadDown);
+            sendPcMessage(KeyBoard + application.keyGamePadDown);
             break;
         case R.id.gamepad_keyboard_left:
-            sendMessage(KeyBoard + application.keyGamePadLeft);
+            sendPcMessage(KeyBoard + application.keyGamePadLeft);
             break;
         case R.id.gamepad_keyboard_right:
-            sendMessage(KeyBoard + application.keyGamePadRight);
+            sendPcMessage(KeyBoard + application.keyGamePadRight);
             break;
         }
     }
@@ -63,9 +63,9 @@ public class GamePadMode extends TouchControlActivity {
     @Override
     protected void handleKeyBoardEvent(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            sendMessage(KeyBoard + application.keyGamePadBack);
+            sendPcMessage(KeyBoard + application.keyGamePadBack);
         } else if (keyCode == KeyEvent.KEYCODE_MENU) {
-            sendMessage(KeyBoard + application.keyGamePadMenu);
+            sendPcMessage(KeyBoard + application.keyGamePadMenu);
         }
     }
 }

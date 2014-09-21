@@ -1,9 +1,12 @@
 package com.kymjs.mobile.ui.activity;
 
+import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.Socket;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.concurrent.ThreadPoolExecutor;
 
 import org.kymjs.aframe.KJLoger;
@@ -25,23 +28,25 @@ public abstract class ControlActivity extends BaseActivity {
     protected static final String MouseMove = "mouse:";
     protected static final String KeyBoard = "keyboard:";
 
-    protected static final String Car_Release = "0";
-    protected static final String Car_Up = "1";
-    protected static final String Car_Down = "2";
-    protected static final String Car_Left = "3";
-    protected static final String Car_Right = "4";
-    protected static final String Car_W = "5";
-    protected static final String Car_S = "6";
-    protected static final String Car_A = "7";
-    protected static final String Car_D = "8";
-    protected static final String Car_More = "9";
-    protected static final String Car_LightOn = "a";
-    protected static final String Car_LightOff = "b";
-    protected static final String Car_Spaker = "c";
+    protected static final String Car_Release = "e";
+    protected static final String Car_Up = "a";
+    protected static final String Car_Down = "b";
+    protected static final String Car_Left = "d";
+    protected static final String Car_Right = "c";
+    protected static final String Car_W = "e";
+    protected static final String Car_S = "e";
+    protected static final String Car_A = "e";
+    protected static final String Car_D = "e";
+    protected static final String Car_More = "e";
+    protected static final String Car_LightOn = "e";
+    protected static final String Car_LightOff = "e";
+    protected static final String Car_Spaker = "e";
 
     protected AppContext application;
     private DatagramSocket socket;
     private ThreadPoolExecutor threadPool;
+
+    private Socket clientSocket = null;
 
     @Override
     protected void initData() {
@@ -66,37 +71,73 @@ public abstract class ControlActivity extends BaseActivity {
     /**
      * 处理按键事件
      */
-    protected abstract void handleKeyBoardEvent(int keyCode,
-            KeyEvent event);
+    protected abstract void handleKeyBoardEvent(int keyCode, KeyEvent event);
 
     /**
      * net request
      */
-    protected void sendMessage(String datas) {
+    protected void sendPcMessage(String datas) {
         if (!StringUtils.isEmpty(datas)) {
             KJLoger.debug("准备发送信号：" + datas);
-            threadPool
-                    .submit(new SendCommandThread(datas.getBytes()));
+            threadPool.submit(new PcCommandThread(datas.getBytes()));
         }
     }
 
     /**
-     * 向电脑发送命令的线程
+     * net request
      */
-    private class SendCommandThread implements Runnable {
+    protected void sendCarMessage(String datas) {
+        if (!StringUtils.isEmpty(datas)) {
+            KJLoger.debug("准备发送小车信号：" + datas);
+            StringBuffer request = new StringBuffer();
+            request.append("GET /?action=" + datas + " HTTP/1.0\r\n");
+            request.append("Host: 192.168.8.1\r\n\r\n");
+            threadPool.submit(new CarCommandThread(request.toString()
+                    .getBytes()));
+        }
+    }
+
+    /**
+     * 向小车发送命令的线程
+     */
+    private class CarCommandThread implements Runnable {
         private byte[] datas;
 
-        public SendCommandThread(byte[] datas) {
+        public CarCommandThread(byte[] datas) {
             this.datas = datas;
         }
 
         @Override
         public void run() {
             try {
-                InetAddress pcAddress = InetAddress
-                        .getByName(application.ip);
-                DatagramPacket packet = new DatagramPacket(datas,
-                        datas.length, pcAddress, application.port);
+                if (clientSocket == null) {
+                    clientSocket = new Socket("192.168.8.1", 2001);
+                }
+                clientSocket.getOutputStream().write(datas, 0, datas.length);
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 向电脑发送命令的线程
+     */
+    private class PcCommandThread implements Runnable {
+        private byte[] datas;
+
+        public PcCommandThread(byte[] datas) {
+            this.datas = datas;
+        }
+
+        @Override
+        public void run() {
+            try {
+                InetAddress pcAddress = InetAddress.getByName(application.ip);
+                DatagramPacket packet = new DatagramPacket(datas, datas.length,
+                        pcAddress, application.port);
                 socket.send(packet);
             } catch (Exception e) {
                 e.printStackTrace();

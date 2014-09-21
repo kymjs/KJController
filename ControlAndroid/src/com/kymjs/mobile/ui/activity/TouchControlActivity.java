@@ -35,8 +35,8 @@ public abstract class TouchControlActivity extends ControlActivity {
                 }
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     if (sFirstX == event.getX() && sFirstY == event.getY()) {
-                        sendMessage(LeftKeyDown);
-                        sendMessage(LeftKeyUp);
+                        sendPcMessage(LeftKeyDown);
+                        sendPcMessage(LeftKeyUp);
                     } else {
                         v.performClick();
                     }
@@ -59,7 +59,7 @@ public abstract class TouchControlActivity extends ControlActivity {
         if (sMoveX != 0 && sMoveY != 0) {
             StringBuilder str = new StringBuilder(MouseMove);
             str.append(sMoveX).append(",").append(sMoveY);
-            sendMessage(str.toString());
+            sendPcMessage(str.toString());
         }
     }
     

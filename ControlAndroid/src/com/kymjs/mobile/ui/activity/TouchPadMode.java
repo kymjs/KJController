@@ -101,12 +101,12 @@ public class TouchPadMode extends TouchControlActivity implements
         super.widgetClick(v);
         switch (v.getId()) {
         case R.id.control_btn_mouse_leftkey:
-            sendMessage(LeftKeyDown);
-            sendMessage(LeftKeyUp);
+            sendPcMessage(LeftKeyDown);
+            sendPcMessage(LeftKeyUp);
             break;
         case R.id.control_btn_mouse_rightkey:
-            sendMessage(RightKeyDown);
-            sendMessage(RightKeyUp);
+            sendPcMessage(RightKeyDown);
+            sendPcMessage(RightKeyUp);
             break;
         case R.id.control_back:
             finish();
@@ -119,7 +119,7 @@ public class TouchPadMode extends TouchControlActivity implements
         switch (v.getId()) {
         case R.id.control_btn_mouse_leftkey:
             if (!flag_press) {
-                sendMessage(LeftKeyDown);
+                sendPcMessage(LeftKeyDown);
                 mMouseLeftKey
                         .setBackgroundResource(R.drawable.ic_mouse_left_sel);
                 flag_press = true;
@@ -127,7 +127,7 @@ public class TouchPadMode extends TouchControlActivity implements
             break;
         case R.id.control_btn_mouse_rightkey:
             if (!flag_press) {
-                sendMessage(RightKeyDown);
+                sendPcMessage(RightKeyDown);
                 mMouseRightKey
                         .setBackgroundResource(R.drawable.ic_mouse_right_sel);
                 flag_press = true;
@@ -142,25 +142,25 @@ public class TouchPadMode extends TouchControlActivity implements
      */
     private void handleWheelEvent() {
         if (sMoveY > 3 || sMoveY < -3) { // 减少发送次数 滑轮移动慢点
-            sendMessage(MouseWheel + sMoveY);
+            sendPcMessage(MouseWheel + sMoveY);
         }
     }
     
     @Override
     protected void handleKeyBoardEvent(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            sendMessage(KeyBoard + application.keyBack);
+            sendPcMessage(KeyBoard + application.keyBack);
         } else if (keyCode == KeyEvent.KEYCODE_MENU) {
-            sendMessage(KeyBoard + application.keyMenu);
+            sendPcMessage(KeyBoard + application.keyMenu);
         } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-            sendMessage(KeyBoard + application.keyVolumeUp);
+            sendPcMessage(KeyBoard + application.keyVolumeUp);
         } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-            sendMessage(KeyBoard + application.keyVolumeDown);
+            sendPcMessage(KeyBoard + application.keyVolumeDown);
         }
     }
     
     @Override
-    protected void sendMessage(String datas) {
+    protected void sendPcMessage(String datas) {
         if (LeftKeyUp.equals(datas) && flag_press) {
             flag_press = false;
             mMouseLeftKey.setBackgroundResource(R.drawable.selector_mouse_left);
@@ -173,7 +173,7 @@ public class TouchPadMode extends TouchControlActivity implements
             mMouseRightKey
                     .setBackgroundResource(R.drawable.selector_mouse_right);
         }
-        super.sendMessage(datas);
+        super.sendPcMessage(datas);
     }
     
 }

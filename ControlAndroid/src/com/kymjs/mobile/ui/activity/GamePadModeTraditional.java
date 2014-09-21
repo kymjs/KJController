@@ -64,9 +64,9 @@ public class GamePadModeTraditional extends ControlActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    sendMessage(KeyBoard + keyEvent + "Press");
+                    sendPcMessage(KeyBoard + keyEvent + "Press");
                 } else {
-                    sendMessage(KeyBoard + keyEvent + "Release");
+                    sendPcMessage(KeyBoard + keyEvent + "Release");
                 }
                 return true;
             }
@@ -78,31 +78,31 @@ public class GamePadModeTraditional extends ControlActivity {
         super.widgetClick(v);
         switch (v.getId()) {
         case R.id.gamepad_left_up:
-            sendMessage(KeyBoard + application.keyGamePadW);
+            sendPcMessage(KeyBoard + application.keyGamePadW);
             break;
         case R.id.gamepad_left_down:
-            sendMessage(KeyBoard + application.keyGamePadS);
+            sendPcMessage(KeyBoard + application.keyGamePadS);
             break;
         case R.id.gamepad_left_left:
-            sendMessage(KeyBoard + application.keyGamePadA);
+            sendPcMessage(KeyBoard + application.keyGamePadA);
             break;
         case R.id.gamepad_left_right:
-            sendMessage(KeyBoard + application.keyGamePadD);
+            sendPcMessage(KeyBoard + application.keyGamePadD);
             break;
         case R.id.gamepad_right_up:
-            sendMessage(KeyBoard + application.keyGamePadUp);
+            sendPcMessage(KeyBoard + application.keyGamePadUp);
             break;
         case R.id.gamepad_right_down:
-            sendMessage(KeyBoard + application.keyGamePadDown);
+            sendPcMessage(KeyBoard + application.keyGamePadDown);
             break;
         case R.id.gamepad_right_left:
-            sendMessage(KeyBoard + application.keyGamePadLeft);
+            sendPcMessage(KeyBoard + application.keyGamePadLeft);
             break;
         case R.id.gamepad_right_right:
-            sendMessage(KeyBoard + application.keyGamePadRight);
+            sendPcMessage(KeyBoard + application.keyGamePadRight);
             break;
         case R.id.gamepad_space:
-            sendMessage(KeyBoard + "Space");
+            sendPcMessage(KeyBoard + "Space");
             break;
         case R.id.gamepad_back:
             finish();
@@ -113,9 +113,9 @@ public class GamePadModeTraditional extends ControlActivity {
     @Override
     protected void handleKeyBoardEvent(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            sendMessage(KeyBoard + application.keyGamePadBack);
+            sendPcMessage(KeyBoard + application.keyGamePadBack);
         } else if (keyCode == KeyEvent.KEYCODE_MENU) {
-            sendMessage(KeyBoard + application.keyGamePadMenu);
+            sendPcMessage(KeyBoard + application.keyGamePadMenu);
         }
     }
 }
