@@ -16,7 +16,12 @@ public class APPConfig {
     public static final String GAMEPAD_DOWN_MSG_KEY = "gamepad_down";
     public static final String GAMEPAD_LEFT_MSG_KEY = "gamepad_left";
     public static final String GAMEPAD_RIGHT_MSG_KEY = "gamepad_right";
-    
+    public static final String PREFERENCE_FILE = "setting_ip";
+    public static final String IP_KEY_PC = "ip_key_pc";
+    public static final String IP_KEY_CAR = "ip_key_car";
+    public static final String PROT_KEY_PC = "prot_key_pc";
+    public static final String PROT_KEY_CAR = "prot_key_car";
+
     public static int KEYBOARD_PAGE_UP = 0;
     public static int KEYBOARD_PAGE_DOWN = 1;
     public static int KEYBOARD_PAGE_LEFT = 2;

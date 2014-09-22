@@ -2,7 +2,6 @@ package com.kymjs.mobile.ui.activity;
 
 import org.kymjs.aframe.ui.BindView;
 
-import android.annotation.SuppressLint;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -14,22 +13,14 @@ import com.kymjs.mobile.R;
 
 public class CarMode extends ControlActivity {
 
-    @BindView(id = R.id.up)
+    @BindView(id = R.id.up, click = true)
     private ImageView keyboardUp;
-    @BindView(id = R.id.down)
+    @BindView(id = R.id.down, click = true)
     private ImageView keyboardDown;
-    @BindView(id = R.id.left)
+    @BindView(id = R.id.left, click = true)
     private ImageView keyboardLeft;
-    @BindView(id = R.id.right)
+    @BindView(id = R.id.right, click = true)
     private ImageView keyboardRight;
-    @BindView(id = R.id.w)
-    private ImageView keyboardW;
-    @BindView(id = R.id.s)
-    private ImageView keyboardS;
-    @BindView(id = R.id.a)
-    private ImageView keyboardA;
-    @BindView(id = R.id.d)
-    private ImageView keyboardD;
     @BindView(id = R.id.more)
     private ImageView more;
     @BindView(id = R.id.spaker)
@@ -51,8 +42,7 @@ public class CarMode extends ControlActivity {
     }
 
     @Override
-    protected void handleKeyBoardEvent(int keyCode, KeyEvent event) {
-    }
+    protected void handleKeyBoardEvent(int keyCode, KeyEvent event) {}
 
     @Override
     protected void initWidget() {
@@ -62,10 +52,6 @@ public class CarMode extends ControlActivity {
         keyboardDown.setOnTouchListener(listener);
         keyboardLeft.setOnTouchListener(listener);
         keyboardRight.setOnTouchListener(listener);
-        keyboardW.setOnTouchListener(listener);
-        keyboardS.setOnTouchListener(listener);
-        keyboardA.setOnTouchListener(listener);
-        keyboardD.setOnTouchListener(listener);
         more.setOnTouchListener(listener);
         speaker.setOnTouchListener(listener);
     }
@@ -78,14 +64,14 @@ public class CarMode extends ControlActivity {
             finish();
             break;
         case R.id.light:
-            sendPcMessage(light.isChecked() ? Car_LightOn : Car_LightOff);
+            sendPcMessage(light.isChecked() ? Car_LightOn
+                    : Car_LightOff);
             break;
         }
     }
 
     private class keyBoardTouchListener implements OnTouchListener {
         @Override
-        @SuppressLint("ClickableViewAccessibility")
         public boolean onTouch(View v, MotionEvent event) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {// 按下
                 switch (v.getId()) {
@@ -101,29 +87,15 @@ public class CarMode extends ControlActivity {
                 case R.id.right:
                     sendCarMessage(Car_Right);
                     break;
-                case R.id.w:
-                    sendCarMessage(Car_W);
-                    break;
-                case R.id.s:
-                    sendCarMessage(Car_S);
-                    break;
-                case R.id.a:
-                    sendCarMessage(Car_A);
-                    break;
-                case R.id.d:
-                    sendPcMessage(Car_D);
-                    break;
-                case R.id.more:
-                    sendCarMessage(Car_More);
-                    break;
                 case R.id.spaker:
                     sendCarMessage(Car_Spaker);
                     break;
                 }
             } else if (event.getAction() == MotionEvent.ACTION_UP) {// 弹起
                 sendCarMessage(Car_Release);
+                v.performClick();
             }
-            return true;
+            return false;
         }
     }
 }
