@@ -318,12 +318,21 @@ public class ResideMenu extends FrameLayout implements
      * 显示某一个菜单项的显示
      */
     private void showMenuItem(ResideMenuItem menuItem, int index) {
+        if (index == 0) {
+            android.widget.LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT);
+            menuItem.measure(0, 0);
+            int h = menuItem.getMeasuredHeight() * menuItems.size();
+            params.topMargin = (DensityUtils.getScreenH(aty) - h) / 2;
+            menuItem.setLayoutParams(params);
+        }
         mLayoutMenu.addView(menuItem);
         menuItem.setAlpha(0.5F);
         AnimatorSet anim = new AnimatorSet();
         anim.playTogether(ObjectAnimator.ofFloat(menuItem,
-                "translationX", -100.f, 0.0f), ObjectAnimator
-                .ofFloat(menuItem, "alpha", 0.0f, 1.0f));
+                "translationX", -200, 0), ObjectAnimator.ofFloat(
+                menuItem, "alpha", 0, 1));
 
         anim.setInterpolator(AnimationUtils.loadInterpolator(aty,
                 android.R.anim.anticipate_overshoot_interpolator));

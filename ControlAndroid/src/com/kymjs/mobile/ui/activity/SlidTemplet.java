@@ -48,19 +48,6 @@ public abstract class SlidTemplet extends KJFragmentActivity
         resideMenu.addIgnoredView(root);
     }
 
-    /**
-     * 过时方法：初始化侧滑菜单界面控件<br>
-     * 你应该使用initSlidMenus(ResideMenuItem...)来初始化每一个菜单项
-     */
-    @Deprecated
-    protected void initSlidMenu() {}
-
-    @Override
-    protected void initWidget() {
-        initSlidMenu();
-        super.initWidget();
-    }
-
     /** 初始化侧滑菜单界面控件 */
     protected void initSlidMenus(ResideMenuItem... items) {
         if (items != null) {
