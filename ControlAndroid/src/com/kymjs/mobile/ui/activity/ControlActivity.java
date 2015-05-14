@@ -101,7 +101,7 @@ public abstract class ControlActivity extends BaseActivity {
      * 向小车发送命令的线程
      */
     private class CarCommandThread implements Runnable {
-        private byte[] datas;
+        private final byte[] datas;
 
         public CarCommandThread(byte[] datas) {
             this.datas = datas;
@@ -126,7 +126,7 @@ public abstract class ControlActivity extends BaseActivity {
      * 向电脑发送命令的线程
      */
     private class PcCommandThread implements Runnable {
-        private byte[] datas;
+        private final byte[] datas;
 
         public PcCommandThread(byte[] datas) {
             this.datas = datas;
