@@ -20,16 +20,16 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
- * µçÄÔ¶Ë´úÂë
+ * ç”µè„‘ç«¯ä»£ç 
  */
 public class Main extends JFrame {
     private static final long serialVersionUID = 1L;
     private static final int port = 8899;
 
     private JTextField messagebox;
-    private int menux = 0; // menuxĞÅºÅ±êÖ¾ 0±íÊ¾Î´¿ªÆô 1±íÊ¾¿ªÆô 2±íÊ¾ÔİÍ£
+    private int menux = 0; // menuxä¿¡å·æ ‡å¿— 0è¡¨ç¤ºæœªå¼€å¯ 1è¡¨ç¤ºå¼€å¯ 2è¡¨ç¤ºæš‚åœ
     private boolean btnIsStart = false;
-    private ServerThread serverthread; // ×èÈûÌ¬Ïß³Ì
+    private ServerThread serverthread; // é˜»å¡æ€çº¿ç¨‹
 
     public static void main(String[] args) {
         new Main();
@@ -45,24 +45,24 @@ public class Main extends JFrame {
     }
 
     /**
-     * ³õÊ¼»¯´°¿Ú²¼¾Ö
+     * åˆå§‹åŒ–çª—å£å¸ƒå±€
      */
     private void initLayout() {
-        setTitle("kymjs½ÓÊÕÆ÷");
+        setTitle("kymjsæ¥æ”¶å™¨");
         setSize(230, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Dimension dimension = getToolkit().getScreenSize(); // »ñµÃDimension¶ÔÏó
-        int screenHeight = dimension.height; // »ñµÃÆÁÄ»µÄ¿í¸ß¶È
+        Dimension dimension = getToolkit().getScreenSize(); // è·å¾—Dimensionå¯¹è±¡
+        int screenHeight = dimension.height; // è·å¾—å±å¹•çš„å®½é«˜åº¦
         int screenWidth = dimension.width;
-        int frm_Height = this.getHeight(); // »ñÈ¡´°Ìå¿í¸ß
+        int frm_Height = this.getHeight(); // è·å–çª—ä½“å®½é«˜
         int frm_width = this.getWidth();
         setLocation((screenWidth - frm_width) / 2,
-                (screenHeight - frm_Height) / 2); // ¾ÓÖĞÏÔÊ¾´°¿Ú
+                (screenHeight - frm_Height) / 2); // å±…ä¸­æ˜¾ç¤ºçª—å£
         getContentPane().setLayout(null);
     }
 
     /**
-     * ³õÊ¼»¯IPĞÅÏ¢
+     * åˆå§‹åŒ–IPä¿¡æ¯
      */
     private void initIpAddress() {
         String localIp = null;
@@ -73,41 +73,42 @@ public class Main extends JFrame {
         final JLabel label = new JLabel();
         label.setFont(new Font("SimSun", Font.PLAIN, 16));
         if (localIp != null && localIp.startsWith("192.168.1.")) {
-            label.setText("±¾»úIPÎª£º" + localIp);
+            label.setText("æœ¬æœºIPä¸ºï¼š" + localIp);
             label.setBounds(10, 20, 300, 25);
         } else {
-            label.setText("»ñÈ¡IPÊ§°Ü£¬ÇëÊÖ¶¯¼ì²â");
+            label.setText("è·å–IPå¤±è´¥ï¼Œè¯·æ‰‹åŠ¨æ£€æµ‹");
             label.setBounds(30, 20, 300, 25);
         }
         getContentPane().add(label);
     }
 
     /**
-     * ¿ª/¹Ø°´Å¥
+     * å¼€/å…³æŒ‰é’®
      */
     private void initButton() {
-        final JButton mBtn = new JButton("¿ªÆô");
+        final JButton mBtn = new JButton("å¼€å¯");
         mBtn.setBounds(10, 60, 190, 25);
         getContentPane().add(mBtn);
         mBtn.addActionListener(new java.awt.event.ActionListener() {
+            @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (!btnIsStart) {
                     start();
-                    mBtn.setText("¹Ø±Õ");
+                    mBtn.setText("å…³é—­");
                 } else {
                     stop();
-                    mBtn.setText("¿ªÆô");
+                    mBtn.setText("å¼€å¯");
                 }
             }
         });
     }
 
     /**
-     * ³õÊ¼»¯ËµÃ÷Text
+     * åˆå§‹åŒ–è¯´æ˜Text
      */
     private void initExplain() {
         final JLabel label3 = new JLabel();
-        label3.setText("ÇëÔÚÊÖ»ú¶ËÊäÈë±¾»úIP");
+        label3.setText("è¯·åœ¨æ‰‹æœºç«¯è¾“å…¥æœ¬æœºIP");
         label3.setBounds(40, 100, 280, 25);
         getContentPane().add(label3);
 
@@ -123,12 +124,12 @@ public class Main extends JFrame {
             serverthread = new ServerThread();
             serverthread.start();
             menux = 1;
-            messagebox.setText("¿ØÖÆ·şÎñÒÑ¿ªÆô");
+            messagebox.setText("æ§åˆ¶æœåŠ¡å·²å¼€å¯");
         }
         if (menux == 2) {
             serverthread.resume();
             menux = 1;
-            messagebox.setText("¿ØÖÆ·şÎñÒÑ»Ö¸´");
+            messagebox.setText("æ§åˆ¶æœåŠ¡å·²æ¢å¤");
         }
     }
 
@@ -137,11 +138,12 @@ public class Main extends JFrame {
         if (menux == 1) {
             serverthread.suspend();
             menux = 2;
-            messagebox.setText("¿ØÖÆ·şÎñÒÑÔİÍ£");
+            messagebox.setText("æ§åˆ¶æœåŠ¡å·²æš‚åœ");
         }
     }
 
     public class ServerThread extends Thread {
+        @Override
         public void run() {
             connection();
         }
@@ -150,15 +152,14 @@ public class Main extends JFrame {
             DatagramSocket socket;
             try {
                 socket = new DatagramSocket(port);
-                messagebox.setText("¿ØÖÆ·şÎñÆô¶¯³É¹¦");
+                messagebox.setText("æ§åˆ¶æœåŠ¡å¯åŠ¨æˆåŠŸ");
             } catch (Exception e) {
-                messagebox.setText(port + "¶Ë¿Ú±»Õ¼ÓÃ");
+                messagebox.setText(port + "ç«¯å£è¢«å ç”¨");
                 menux = 0;
                 return;
             }
             byte data[] = new byte[1024];
-            DatagramPacket packet = new DatagramPacket(data,
-                    data.length);
+            DatagramPacket packet = new DatagramPacket(data, data.length);
             try {
                 while (true) {
                     socket.receive(packet);
@@ -195,7 +196,7 @@ public class Main extends JFrame {
         }
 
         /**
-         * ´¦ÀíÊó±êÒÆ¶¯
+         * å¤„ç†é¼ æ ‡ç§»åŠ¨
          */
         public void mouseMove(String info) {
             String args[] = info.split(",");
@@ -204,9 +205,9 @@ public class Main extends JFrame {
             float px = Float.valueOf(x);
             float py = Float.valueOf(y);
 
-            PointerInfo pinfo = MouseInfo.getPointerInfo(); // µÃµ½Êó±êµÄ×ø±ê
+            PointerInfo pinfo = MouseInfo.getPointerInfo(); // å¾—åˆ°é¼ æ ‡çš„åæ ‡
             java.awt.Point p = pinfo.getLocation();
-            double mx = p.getX(); // µÃµ½µ±Ç°µçÄÔÊó±êµÄ×ø±ê
+            double mx = p.getX(); // å¾—åˆ°å½“å‰ç”µè„‘é¼ æ ‡çš„åæ ‡
             double my = p.getY();
             try {
                 java.awt.Robot robot = new Robot();
@@ -216,7 +217,7 @@ public class Main extends JFrame {
         }
 
         /**
-         * ×ó¼üÊÂ¼ş´¦Àí
+         * å·¦é”®äº‹ä»¶å¤„ç†
          */
         public void leftButton(String info) {
             java.awt.Robot robot = null;
@@ -238,7 +239,7 @@ public class Main extends JFrame {
         }
 
         /**
-         * ÓÒ¼üÊÂ¼ş´¦Àí
+         * å³é”®äº‹ä»¶å¤„ç†
          */
         public void rightButton(String info) {
             java.awt.Robot robot = null;
@@ -260,7 +261,7 @@ public class Main extends JFrame {
         }
 
         /**
-         * Êó±ê¹öÂÖÊÂ¼ş´¦Àí
+         * é¼ æ ‡æ»šè½®äº‹ä»¶å¤„ç†
          */
         public void mouseWheel(String info) {
             java.awt.Robot robot = null;
@@ -277,7 +278,7 @@ public class Main extends JFrame {
         }
 
         /**
-         * °´¼üÊÂ¼ş´¦Àí
+         * æŒ‰é”®äº‹ä»¶å¤„ç†
          */
         public void keyBoard(String info) {
             switch (info) {
@@ -372,7 +373,7 @@ public class Main extends JFrame {
         }
 
         /**
-         * °´ÏÂ
+         * æŒ‰ä¸‹
          * 
          * @param key
          */
@@ -387,7 +388,7 @@ public class Main extends JFrame {
         }
 
         /**
-         * Ì§Æğ
+         * æŠ¬èµ·
          * 
          * @param key
          */
@@ -402,7 +403,7 @@ public class Main extends JFrame {
         }
 
         /**
-         * µ¥»÷
+         * å•å‡»
          */
         private void keyBoardClick(int key) {
             java.awt.Robot robot = null;
@@ -416,7 +417,7 @@ public class Main extends JFrame {
         }
 
         /**
-         * ×éºÏ¼ü
+         * ç»„åˆé”®
          */
         private void keyBoardGroup(int keyPress, int key) {
             java.awt.Robot robot = null;
