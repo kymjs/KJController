@@ -44,6 +44,75 @@ public class Main extends JFrame {
         this.setVisible(true);
     }
 
+
+//    new Thread(new Runnable() {
+//        @Override
+//        public void run() {
+//            while (true) {
+//                try {
+//                    Thread.sleep(3500);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//                if (menux == 1) {
+//                    send(KeyEvent.VK_SHIFT, KeyEvent.VK_META, KeyEvent.VK_R);
+//                    try {
+//                        Thread.sleep(500);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    send(KeyEvent.VK_LEFT);
+//                    send(KeyEvent.VK_LEFT);
+//                    send(KeyEvent.VK_LEFT);
+//                    send(KeyEvent.VK_SHIFT, KeyEvent.VK_RIGHT);
+//                    send(KeyEvent.VK_SHIFT, KeyEvent.VK_RIGHT);
+//                    send(KeyEvent.VK_SHIFT, KeyEvent.VK_RIGHT);
+//                    send(KeyEvent.VK_SHIFT, KeyEvent.VK_RIGHT);
+//                    send(KeyEvent.VK_BACK_SPACE);
+//                    send(KeyEvent.VK_L);
+//                    send(KeyEvent.VK_I);
+//                    send(KeyEvent.VK_B);
+//                    send(KeyEvent.VK_META, KeyEvent.VK_V);
+//                    send(KeyEvent.VK_C);
+//                    send(KeyEvent.VK_O);
+//                    send(KeyEvent.VK_M);
+//                    send(KeyEvent.VK_M);
+//                    send(KeyEvent.VK_O);
+//                    send(KeyEvent.VK_N);
+//                    try {
+//                        Thread.sleep(500);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    send(KeyEvent.VK_ENTER);
+//                } else {
+//                    try {
+//                        Thread.sleep(3000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+//    }).start();
+//
+//    private void send(int... keyPress) {
+//        java.awt.Robot robot;
+//        try {
+//            robot = new Robot();
+//        } catch (AWTException e) {
+//            return;
+//        }
+//        if (keyPress != null) {
+//            for (int key : keyPress) {
+//                robot.keyPress(key);
+//            }
+//            for (int i = keyPress.length - 1; i >= 0; i--) {
+//                robot.keyRelease(keyPress[i]);
+//            }
+//        }
+//    }
+
     /**
      * 初始化窗口布局
      */
@@ -72,7 +141,7 @@ public class Main extends JFrame {
         }
         final JLabel label = new JLabel();
         label.setFont(new Font("SimSun", Font.PLAIN, 16));
-        if (localIp != null && localIp.startsWith("192.168.1.")) {
+        if (localIp != null) {
             label.setText("本机IP为：" + localIp);
             label.setBounds(10, 20, 300, 25);
         } else {
@@ -171,21 +240,21 @@ public class Main extends JFrame {
                         String type = messages[0];
                         String info = messages[1];
                         switch (type) {
-                        case "mouse":
-                            mouseMove(info);
-                            break;
-                        case "leftButton":
-                            leftButton(info);
-                            break;
-                        case "rightButton":
-                            rightButton(info);
-                            break;
-                        case "mousewheel":
-                            mouseWheel(info);
-                            break;
-                        case "keyboard":
-                            keyBoard(info);
-                            break;
+                            case "mouse":
+                                mouseMove(info);
+                                break;
+                            case "leftButton":
+                                leftButton(info);
+                                break;
+                            case "rightButton":
+                                rightButton(info);
+                                break;
+                            case "mousewheel":
+                                mouseWheel(info);
+                                break;
+                            case "keyboard":
+                                keyBoard(info);
+                                break;
                         }
                     }
                 }
@@ -282,99 +351,102 @@ public class Main extends JFrame {
          */
         public void keyBoard(String info) {
             switch (info) {
-            case "Space":
-                keyBoardClick(KeyEvent.VK_SPACE);
-                break;
-            case "Up":
-                keyBoardClick(KeyEvent.VK_UP);
-                break;
-            case "UpPress":
-                keyBoardPress(KeyEvent.VK_UP);
-                break;
-            case "UpRelease":
-                keyBoardRelease(KeyEvent.VK_UP);
-                break;
-            case "Down":
-                keyBoardClick(KeyEvent.VK_DOWN);
-                break;
-            case "DownPress":
-                keyBoardPress(KeyEvent.VK_DOWN);
-                break;
-            case "DownRelease":
-                keyBoardRelease(KeyEvent.VK_DOWN);
-                break;
-            case "Left":
-                keyBoardClick(KeyEvent.VK_LEFT);
-                break;
-            case "LeftPress":
-                keyBoardPress(KeyEvent.VK_LEFT);
-                break;
-            case "LeftRelease":
-                keyBoardRelease(KeyEvent.VK_LEFT);
-                break;
-            case "Right":
-                keyBoardClick(KeyEvent.VK_RIGHT);
-                break;
-            case "RightPress":
-                keyBoardPress(KeyEvent.VK_RIGHT);
-                break;
-            case "RightRelease":
-                keyBoardRelease(KeyEvent.VK_RIGHT);
-                break;
-            case "W":
-                keyBoardClick(KeyEvent.VK_W);
-                break;
-            case "WPress":
-                keyBoardPress(KeyEvent.VK_W);
-                break;
-            case "WRelease":
-                keyBoardRelease(KeyEvent.VK_W);
-                break;
-            case "S":
-                keyBoardClick(KeyEvent.VK_S);
-                break;
-            case "SPress":
-                keyBoardPress(KeyEvent.VK_S);
-                break;
-            case "SRelease":
-                keyBoardRelease(KeyEvent.VK_S);
-                break;
-            case "A":
-                keyBoardClick(KeyEvent.VK_A);
-                break;
-            case "APress":
-                keyBoardPress(KeyEvent.VK_A);
-                break;
-            case "ARelease":
-                keyBoardRelease(KeyEvent.VK_A);
-                break;
-            case "D":
-                keyBoardClick(KeyEvent.VK_D);
-                break;
-            case "DPress":
-                keyBoardPress(KeyEvent.VK_D);
-                break;
-            case "DRelease":
-                keyBoardRelease(KeyEvent.VK_D);
-                break;
-            case "Ctrl+Z":
-                keyBoardGroup(KeyEvent.VK_CONTROL, KeyEvent.VK_Z);
-                break;
-            case "Ctrl+C":
-                keyBoardGroup(KeyEvent.VK_CONTROL, KeyEvent.VK_C);
-                break;
-            case "Ctrl+V":
-                keyBoardGroup(KeyEvent.VK_CONTROL, KeyEvent.VK_V);
-                break;
-            case "Ctrl+S":
-                keyBoardGroup(KeyEvent.VK_CONTROL, KeyEvent.VK_S);
-                break;
+                case "Space":
+                    keyBoardClick(KeyEvent.VK_SPACE);
+                    break;
+                case "Up":
+                    keyBoardClick(KeyEvent.VK_UP);
+                    break;
+                case "UpPress":
+                    keyBoardPress(KeyEvent.VK_UP);
+                    break;
+                case "UpRelease":
+                    keyBoardRelease(KeyEvent.VK_UP);
+                    break;
+                case "Down":
+                    keyBoardClick(KeyEvent.VK_DOWN);
+                    break;
+                case "DownPress":
+                    keyBoardPress(KeyEvent.VK_DOWN);
+                    break;
+                case "DownRelease":
+                    keyBoardRelease(KeyEvent.VK_DOWN);
+                    break;
+                case "Left":
+                    keyBoardClick(KeyEvent.VK_LEFT);
+                    break;
+                case "LeftPress":
+                    keyBoardPress(KeyEvent.VK_LEFT);
+                    break;
+                case "LeftRelease":
+                    keyBoardRelease(KeyEvent.VK_LEFT);
+                    break;
+                case "Right":
+                    keyBoardClick(KeyEvent.VK_RIGHT);
+                    break;
+                case "RightPress":
+                    keyBoardPress(KeyEvent.VK_RIGHT);
+                    break;
+                case "RightRelease":
+                    keyBoardRelease(KeyEvent.VK_RIGHT);
+                    break;
+                case "W":
+                    keyBoardClick(KeyEvent.VK_W);
+                    break;
+                case "WPress":
+                    keyBoardPress(KeyEvent.VK_W);
+                    break;
+                case "WRelease":
+                    keyBoardRelease(KeyEvent.VK_W);
+                    break;
+                case "S":
+                    keyBoardClick(KeyEvent.VK_S);
+                    break;
+                case "SPress":
+                    keyBoardPress(KeyEvent.VK_S);
+                    break;
+                case "SRelease":
+                    keyBoardRelease(KeyEvent.VK_S);
+                    break;
+                case "A":
+                    keyBoardClick(KeyEvent.VK_A);
+                    break;
+                case "APress":
+                    keyBoardPress(KeyEvent.VK_A);
+                    break;
+                case "ARelease":
+                    keyBoardRelease(KeyEvent.VK_A);
+                    break;
+                case "D":
+                    keyBoardClick(KeyEvent.VK_D);
+                    break;
+                case "DPress":
+                    keyBoardPress(KeyEvent.VK_D);
+                    break;
+                case "DRelease":
+                    keyBoardRelease(KeyEvent.VK_D);
+                    break;
+                case "Ctrl+Z":
+                    keyBoardClick(KeyEvent.VK_CONTROL, KeyEvent.VK_Z);
+                    break;
+                case "Ctrl+C":
+                    keyBoardClick(KeyEvent.VK_CONTROL, KeyEvent.VK_C);
+                    break;
+                case "Ctrl+V":
+                    keyBoardClick(KeyEvent.VK_CONTROL, KeyEvent.VK_V);
+                    break;
+                case "Ctrl+S":
+                    keyBoardClick(KeyEvent.VK_CONTROL, KeyEvent.VK_S);
+                    break;
+                case "Command+Shift+R":
+                    keyBoardClick(KeyEvent.VK_SHIFT, KeyEvent.VK_WINDOWS, KeyEvent.VK_R);
+                    break;
             }
         }
 
         /**
          * 按下
-         * 
+         *
          * @param key
          */
         private void keyBoardPress(int key) {
@@ -389,7 +461,7 @@ public class Main extends JFrame {
 
         /**
          * 抬起
-         * 
+         *
          * @param key
          */
         private void keyBoardRelease(int key) {
@@ -403,33 +475,24 @@ public class Main extends JFrame {
         }
 
         /**
-         * 单击
-         */
-        private void keyBoardClick(int key) {
-            java.awt.Robot robot = null;
-            try {
-                robot = new Robot();
-            } catch (AWTException e) {
-                return;
-            }
-            robot.keyPress(key);
-            robot.keyRelease(key);
-        }
-
-        /**
          * 组合键
          */
-        private void keyBoardGroup(int keyPress, int key) {
-            java.awt.Robot robot = null;
+        private void keyBoardClick(int... keyPress) {
+            java.awt.Robot robot;
             try {
                 robot = new Robot();
             } catch (AWTException e) {
                 return;
             }
-            robot.keyPress(keyPress);
-            robot.keyPress(key);
-            robot.keyRelease(key);
-            robot.keyRelease(keyPress);
+            if (keyPress != null) {
+                for (int key : keyPress) {
+                    robot.keyPress(key);
+                }
+                for (int i = keyPress.length - 1; i >= 0; i--) {
+                    robot.keyRelease(keyPress[i]);
+                }
+            }
         }
+
     }
 }
